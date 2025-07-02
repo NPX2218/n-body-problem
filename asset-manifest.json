@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/n-body-problem/static/css/main.eef69fe2.css",
+    "main.js": "/n-body-problem/static/js/main.0e1788cb.js",
+    "index.html": "/n-body-problem/index.html",
+    "main.eef69fe2.css.map": "/n-body-problem/static/css/main.eef69fe2.css.map",
+    "main.0e1788cb.js.map": "/n-body-problem/static/js/main.0e1788cb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eef69fe2.css",
+    "static/js/main.0e1788cb.js"
+  ]
+}
