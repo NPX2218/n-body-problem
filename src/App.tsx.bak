@@ -1,0 +1,95 @@
+import React, { useEffect, useRef, useCallback } from "react";
+import { TweenMax, Power1 } from "gsap";
+import "./App.css";
+import "./galaxy.js";
+
+function App() {
+  const dotContainerRef = useRef<HTMLDivElement>(null);
+  const [showDotContainer, setShowDotContainer] = React.useState(false);
+
+  const getParticlesAnimation = useCallback(() => {
+    if (!dotContainerRef.current) return;
+
+    let i = 500;
+    while (--i > -1) {
+      const dot = document.createElement("div");
+      dot.className = "dot";
+      dotContainerRef.current.appendChild(dot);
+      tween(dot);
+    }
+  }, []);
+
+  const tween = (element: HTMLElement) => {
+    TweenMax.set(element, {
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      z: Math.random() * Math.PI * 1000,
+    });
+    TweenMax.to(element, Math.random() * 2, {
+      z: 3000,
+      onComplete: () => tween(element),
+    });
+  };
+
+  const handleResize = useCallback(() => {
+    if (!dotContainerRef.current) return;
+    dotContainerRef.current.style.height = `${window.innerHeight}px`;
+  }, []);
+
+  useEffect(() => {
+    getParticlesAnimation();
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    // Animation to increase perspective
+    TweenMax.to(dotContainerRef.current, 5, {
+      perspective: "10000px",
+      ease: Power1.easeInOut,
+      onComplete: () => {
+        // After reaching max perspective, decrease it
+        TweenMax.to(dotContainerRef.current, 5, {
+          perspective: "2700px",
+          ease: Power1.easeInOut,
+          onComplete: () => {
+            // After perspective animation completes, fade into black
+            TweenMax.to(dotContainerRef.current, 2, {
+              backgroundColor: "black",
+              ease: Power1.easeInOut,
+              onComplete: () => {
+                // Remove all dots
+                if (dotContainerRef.current) {
+                  dotContainerRef.current.innerHTML = "";
+                }
+                setShowDotContainer(false);
+                // Navigate to blank page or handle it as needed
+                // Example: window.location.href = "/blank-page";
+              },
+            });
+          },
+        });
+      },
+    });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [getParticlesAnimation, handleResize]);
+
+  return (
+    <div className="w-full h-full overflow-y-auto">
+      <canvas className="webgl"></canvas>
+      <div className="heading p-10 h-[200vh]">
+        <h1 className="uppercase">N-body problem</h1>
+        <h4>By: Neel Bansal</h4>
+      </div>
+      <p>hello</p>
+    </div>
+  );
+}
+
+export default App;
+{
+  /* <div className="bg-black relative overflow-hidden" ref={dotContainerRef}>
+      {showDotContainer === false && <canvas className="webgl"></canvas>}
+    </div>*/
+}
