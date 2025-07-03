@@ -15,8 +15,8 @@ window.onload = function () {
   });
 
   const textureLoader = new THREE.TextureLoader();
-  const shape = textureLoader.load("./1.png");
-
+  const shape = null;
+  // shape = textureLoader.load("./1.png");
   // Canvas
   let canvas = null;
   if (document.querySelector("canvas.webgl") != null) {
@@ -51,130 +51,93 @@ window.onload = function () {
     .max(100000)
     .step(100)
     .onChange(generateGalaxy)
-    .name("stars in galaxy");
+    .name("Stars in Galaxy");
+
   gui
     .add(parameters, "stars")
     .min(0)
     .max(100000)
     .step(100)
     .onChange(generateBgStars)
-    .name("background stars");
+    .name("Background Stars");
+
   gui
     .addColor(parameters, "starColor")
     .onChange(generateBgStars)
-    .name("color of stars");
+    .name("Star Color");
+
   gui
     .add(parameters, "size")
     .min(0.001)
     .max(0.1)
     .step(0.001)
     .onChange(generateGalaxy)
-    .name("size of stars in galaxy");
+    .name("Star Size in Galaxy");
+
   gui
     .add(parameters, "radius")
     .min(1)
     .max(10)
     .step(1)
     .onChange(generateGalaxy)
-    .name("radius of galaxy");
+    .name("Galaxy Radius");
+
   gui
     .add(parameters, "branches")
     .min(1)
     .max(10)
     .step(1)
     .onChange(generateGalaxy)
-    .name("branches in galaxy");
+    .name("Galaxy Branches");
+
   gui
     .add(parameters, "spin")
     .min(-5)
     .max(5)
     .step(0.001)
     .onChange(generateGalaxy)
-    .name("spin of the galaxy");
+    .name("Galaxy Spin");
+
   gui
     .add(parameters, "randomness")
     .min(0)
     .max(2)
     .step(0.01)
-    .onChange(generateGalaxy);
+    .onChange(generateGalaxy)
+    .name("Randomness");
+
   gui
     .add(parameters, "randomnessPower")
     .min(1)
     .max(10)
     .step(1)
-    .onChange(generateGalaxy);
+    .onChange(generateGalaxy)
+    .name("Randomness Power");
+
   gui
     .addColor(parameters, "insideColor")
     .onChange(generateGalaxy)
-    .name("color of core");
+    .name("Core Color");
+
   gui
     .addColor(parameters, "outsideColor")
     .onChange(generateGalaxy)
-    .name("color of branches");
+    .name("Branch Color");
+
   gui
     .add(parameters, "showGalaxy")
     .onChange((value) => {
       if (points) points.visible = value;
     })
     .name("Show Galaxy");
+
   gui
     .add(parameters, "immersiveMode")
     .onChange((value) => {
-      let ui = document.getElementById("ui");
-
-      if (ui) {
-        ui.style.display = value ? "none" : "block"; // Hides UI in immersive mode
-      }
+      const ui = document.getElementById("ui");
+      if (ui) ui.style.display = value ? "none" : "block";
     })
     .name("Immersive Mode");
-  let bgStarsGeometry = null;
-  let bgStarsMaterial = null;
-  let bgStars = null;
-
-  //Background stars
-  function generateBgStars() {
-    if (bgStars !== null) {
-      bgStarsGeometry.dispose();
-      bgStarsMaterial.dispose();
-      scene.remove(bgStars);
-    }
-
-    bgStarsGeometry = new THREE.BufferGeometry();
-    const bgStarsPositions = new Float32Array(parameters.stars * 3);
-
-    for (let j = 0; j < parameters.stars; j++) {
-      bgStarsPositions[j * 3 + 0] = (Math.random() - 0.5) * 20;
-      bgStarsPositions[j * 3 + 1] = (Math.random() - 0.5) * 20;
-      bgStarsPositions[j * 3 + 2] = (Math.random() - 0.5) * 20;
-    }
-
-    bgStarsGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(bgStarsPositions, 3)
-    );
-
-    bgStarsMaterial = new THREE.PointsMaterial({
-      color: "white",
-      size: parameters.size,
-      depthWrite: false,
-      sizeAttenuation: true,
-      blending: AdditiveBlending,
-      color: parameters.starColor,
-      transparent: true,
-      alphaMap: shape,
-    });
-
-    bgStars = new THREE.Points(bgStarsGeometry, bgStarsMaterial);
-
-    scene.add(bgStars);
-  }
-
-  generateBgStars();
-
-  //gALAXY GENerator
-  let geometry = null;
-  let material = null;
-  let points = null;
 
   function generateGalaxy() {
     if (points !== null) {
@@ -240,6 +203,55 @@ window.onload = function () {
     points.visible = parameters.showGalaxy; // <- respect the toggle state
     scene.add(points);
   }
+
+  let bgStarsGeometry = null;
+  let bgStarsMaterial = null;
+  let bgStars = null;
+
+  //Background stars
+  function generateBgStars() {
+    if (bgStars !== null) {
+      bgStarsGeometry.dispose();
+      bgStarsMaterial.dispose();
+      scene.remove(bgStars);
+    }
+
+    bgStarsGeometry = new THREE.BufferGeometry();
+    const bgStarsPositions = new Float32Array(parameters.stars * 3);
+
+    for (let j = 0; j < parameters.stars; j++) {
+      bgStarsPositions[j * 3 + 0] = (Math.random() - 0.5) * 20;
+      bgStarsPositions[j * 3 + 1] = (Math.random() - 0.5) * 20;
+      bgStarsPositions[j * 3 + 2] = (Math.random() - 0.5) * 20;
+    }
+
+    bgStarsGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(bgStarsPositions, 3)
+    );
+
+    bgStarsMaterial = new THREE.PointsMaterial({
+      color: "white",
+      size: parameters.size,
+      depthWrite: false,
+      sizeAttenuation: true,
+      blending: AdditiveBlending,
+      color: parameters.starColor,
+      transparent: true,
+      alphaMap: shape,
+    });
+
+    bgStars = new THREE.Points(bgStarsGeometry, bgStarsMaterial);
+
+    scene.add(bgStars);
+  }
+
+  generateBgStars();
+
+  //gALAXY GENerator
+  let geometry = null;
+  let material = null;
+  let points = null;
 
   generateGalaxy();
 

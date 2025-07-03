@@ -1,19 +1,21 @@
-import React, { useEffect, useRef } from "react";
-import { TweenMax, Power1 } from "gsap";
-import LocomotiveScroll from "locomotive-scroll";
+import React, { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 import "./App.css";
 import "./galaxy.js";
 import Introduction from "./sections/Introduction";
 import TwoBody from "./sections/twoBody/TwoBody";
 import Footer from "./components/Footer";
+import Popup from "./components/Popup";
 
 function Home() {
+  const [showPopup, setShowPopup] = useState<boolean>(true);
+
   return (
     <div className="w-full overflow-y-clip overflow-x-hidden bg-black h-[440vh]">
       {/* scroll-container*/}
 
       <canvas className="webgl w-full h-[440vh] no-scrollbar"> </canvas>
-      <div className="heading p-10">
+      <div className="heading max-w-[90%] p-5 mx-auto">
         <h1 className="text-white uppercase">N-body problem</h1>
         <h4>By: Neel Bansal</h4>
         <br />
@@ -21,7 +23,10 @@ function Home() {
         <br />
         <br />
         <br />
-        <div id="ui">
+        {showPopup ? (
+          <Popup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+        ) : null}
+        <div id="ui " className="z-10 ">
           <Introduction />
           <TwoBody />
           <Footer />

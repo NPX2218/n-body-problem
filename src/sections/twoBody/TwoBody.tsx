@@ -4,7 +4,7 @@ var Latex = require("react-latex");
 
 const TwoBody = () => {
   return (
-    <section id="twoBody">
+    <section id="twoBody" className="">
       <h2 className="text-white text-2xl font-bold pb-2">Two Body Case</h2>
       <p>The two body problem is a special case of the n-body problem.</p>
       <p>The Gravitational force can be expressed as:</p>

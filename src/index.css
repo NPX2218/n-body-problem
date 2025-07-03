@@ -15,7 +15,7 @@
 }
 
 .dg {
-  z-index: 9999 !important;
+  z-index: 49 !important;
   position: fixed !important; /* or 'absolute' depending on your layout */
   top: 0;
   right: 0;
