@@ -4,7 +4,7 @@ import * as dat from "dat.gui";
 import { AdditiveBlending, Float32BufferAttribute } from "three";
 import LocomotiveScroll from "locomotive-scroll";
 
-window.onload = function () {
+export function startThree() {
   /**
    * Base
    */
@@ -18,11 +18,10 @@ window.onload = function () {
   const shape = null;
   // shape = textureLoader.load("./1.png");
   // Canvas
-  let canvas = null;
-  if (document.querySelector("canvas.webgl") != null) {
-    canvas = document.querySelector("canvas.webgl");
-  } else {
-    canvas = null;
+  let canvas = document.querySelector("canvas.webgl");
+  if (!canvas) {
+    console.error("Canvas with class 'webgl' not found!");
+    return;
   }
 
   // Scene
@@ -343,4 +342,4 @@ window.onload = function () {
   };
 
   tick();
-};
+}

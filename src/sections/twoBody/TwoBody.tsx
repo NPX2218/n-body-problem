@@ -68,8 +68,11 @@ const TwoBody = () => {
       />
       <CenteredLatex
         text={
-          "\\Rightarrow \\ddot{\\vec{r}} = \\ddot{\\vec{r}}_1 - \\ddot{\\vec{r}}_2 = \\vec{F} \\left( \\frac{1}{m_1} + \\frac{1}{m_2} \\right) = \\vec{F} \\left( \\frac{m_2 + m_1}{m_1 m_2} \\right)"
+          "\\Rightarrow \\ddot{\\vec{r}} = \\ddot{\\vec{r}}_1 - \\ddot{\\vec{r}}_2 = \\vec{F} \\left( \\frac{1}{m_1} + \\frac{1}{m_2} \\right) "
         }
+      />
+      <CenteredLatex
+        text={" = \\vec{F} \\left( \\frac{m_2 + m_1}{m_1 m_2} \\right)"}
       />
       <CenteredLatex
         text={"= \\vec{F} \\left( \\frac{m_1 + m_2}{m_1 m_2} \\right)"}
