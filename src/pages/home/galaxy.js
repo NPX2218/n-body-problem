@@ -1,7 +1,11 @@
+///////////////////////////////
+// IMPORTING MODULES
+///////////////////////////////
+
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
-import { AdditiveBlending, Float32BufferAttribute } from "three";
+import { AdditiveBlending } from "three";
 import LocomotiveScroll from "locomotive-scroll";
 
 export function startThree() {
@@ -16,7 +20,7 @@ export function startThree() {
 
   const textureLoader = new THREE.TextureLoader();
   const shape = null;
-  // shape = textureLoader.load("./1.png");
+  // shape = textureLoader.load("./particle.png");
   // Canvas
   let canvas = document.querySelector("canvas.webgl");
   if (!canvas) {

@@ -1,15 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import "./App.css";
+///////////////////////////////
+// IMPORTING MODULES
+///////////////////////////////
+
+import React, { useEffect, useState } from "react";
 import "./galaxy.js";
 import Introduction from "./sections/Introduction";
-import TwoBody from "./sections/twoBody/TwoBody";
-import Footer from "./components/Footer";
-import Popup from "./components/Popup";
+import TwoBody from "./sections/TwoBody";
+import Footer from "../../components/Footer";
+import Popup from "../../components/Popup";
 import { startThree } from "./galaxy.js";
 
-function Home() {
+///////////////////////////////
+// COMPONENT: HOME
+///////////////////////////////
+
+const Home = (): JSX.Element => {
   const [showPopup, setShowPopup] = useState<boolean>(true);
+
   useEffect(() => {
     function waitForCanvas() {
       const canvas = document.querySelector("canvas.webgl");
@@ -25,12 +32,10 @@ function Home() {
   }, []);
   return (
     <div className="w-full overflow-y-clip overflow-x-hidden bg-black h-[440vh]">
-      {/* scroll-container*/}
-
       <canvas className="webgl w-full no-scrollbar"></canvas>
       <div className="heading max-w-[90%] p-5 mx-auto">
         <h1 className="text-white uppercase">N-body problem</h1>
-        <h4>By: Neel Bansal</h4>
+        <h4>By: Neel Bansal and Soham Gupta</h4>
         <br />
         <br />
         <br />
@@ -48,6 +53,10 @@ function Home() {
       </div>
     </div>
   );
-}
+};
+
+///////////////////////////////
+// EXPORTING HOME
+///////////////////////////////
 
 export default Home;

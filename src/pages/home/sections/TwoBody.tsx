@@ -1,8 +1,16 @@
+///////////////////////////////
+// IMPORTING MODULES
+///////////////////////////////
+
 import React from "react";
-import CenteredLatex from "../../components/CenteredLatex";
+import CenteredLatex from "../../../components/CenteredLatex";
 var Latex = require("react-latex");
 
-const TwoBody = () => {
+///////////////////////////////
+// COMPONENT: TWOBODY
+///////////////////////////////
+
+const TwoBody = (): JSX.Element => {
   return (
     <section id="twoBody" className="">
       <h2 className="text-white text-2xl font-bold pb-2">Two Body Case</h2>
@@ -23,7 +31,7 @@ const TwoBody = () => {
         text={"F = -G \\frac{m_1 m_2}{|r|^3} \\times (\\vec{r_1}-\\vec{r_2})"}
       />
       <p>
-        where <Latex>{"\\hat{r}"}</Latex> is the unit vector between the two
+        where <Latex>{"$\\hat{r}$"}</Latex> is the unit vector between the two
         point masses.
       </p>
       <p>We can write our equations of motion as follows:</p>
@@ -40,7 +48,7 @@ const TwoBody = () => {
       <p>
         However, to move forward, we need to define two new quantities: The
         reduced mass which allows us to reduce a 2-body system into a 1-body
-        problem, with a "fictious" particle <Latex>{"\\mu"}</Latex> which acts
+        problem, with a "fictious" particle <Latex>{"$\\mu$"}</Latex> which acts
         under the gravitational force of both masses. Secondly, we must define
         the center of mass. This is essentially just a weighted average of two
         masses.
@@ -147,7 +155,7 @@ const TwoBody = () => {
         Since <Latex>{"$F_{21} = -F_{12}$"}</Latex>:
       </p>
       <CenteredLatex
-        text={"\\ddot{\\vec{R}} = \\frac{F_{12} - F_{21}}{m_1+m_2} = 0"}
+        text={"\\ddot{\\vec{R}} = \\frac{F_{12} + (- F_{12})}{m_1+m_2} = 0"}
       />
       <p>
         This means our system will be at translational equilibrium, and there
@@ -169,5 +177,9 @@ const TwoBody = () => {
     </section>
   );
 };
+
+///////////////////////////////
+// EXPORTING TWOBODY
+///////////////////////////////
 
 export default TwoBody;

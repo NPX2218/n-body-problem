@@ -1,5 +1,13 @@
+///////////////////////////////
+// IMPORTING MODULES
+///////////////////////////////
+
 import React from "react";
 var Latex = require("react-latex");
+
+///////////////////////////////
+// COMPONENT: INTRODUCTION
+///////////////////////////////
 
 const Introduction = (): JSX.Element => {
   return (
@@ -28,5 +36,9 @@ const Introduction = (): JSX.Element => {
     </section>
   );
 };
+
+///////////////////////////////
+// EXPORTING INTRODUCTION
+///////////////////////////////
 
 export default Introduction;

@@ -1,13 +1,23 @@
+///////////////////////////////
+// IMPORTING MODULES
+///////////////////////////////
+
 import React, { useEffect } from "react";
-import immersiveModeToggle from "./immersiveModeToggle.png";
+
+///////////////////////////////
+// INTERFACE: PROPS
+///////////////////////////////
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  children?: React.ReactNode;
 }
 
-const Popup = ({ isOpen, onClose, children }: Props) => {
+///////////////////////////////
+// COMPONENT: POPUP
+///////////////////////////////
+
+const Popup = ({ isOpen, onClose }: Props): JSX.Element | null => {
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -37,7 +47,7 @@ const Popup = ({ isOpen, onClose, children }: Props) => {
           </button>
         </div>
 
-        <p className="text-gray-300 mb-6">By: Neel Bansal</p>
+        <p className="text-gray-300 mb-6">By: Neel Bansal and Soham Gupta</p>
 
         {/* Content */}
         <div className="flex flex-col md:flex-row md:items-start gap-6 justify-center items-center">
@@ -62,7 +72,7 @@ const Popup = ({ isOpen, onClose, children }: Props) => {
           </p>
 
           <img
-            src={immersiveModeToggle}
+            src="/n-body-problem/images/immersiveModeToggle.png"
             alt="Immersive Mode Toggle"
             className="w-[300px] h-auto rounded-md shadow-md"
           />
@@ -71,5 +81,9 @@ const Popup = ({ isOpen, onClose, children }: Props) => {
     </div>
   );
 };
+
+///////////////////////////////
+// EXPORTING POPUP
+///////////////////////////////
 
 export default Popup;
