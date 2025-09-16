@@ -9,6 +9,8 @@ import TwoBody from "./sections/TwoBody";
 import Footer from "../../components/Footer";
 import Popup from "../../components/Popup";
 import { startThree } from "./galaxy.js";
+import HamiltonMechanics from "./sections/HamiltonMechanics";
+import NBodyComplexity from "./sections/NBodyComplexity";
 
 ///////////////////////////////
 // COMPONENT: HOME
@@ -48,6 +50,8 @@ const Home = (): JSX.Element => {
         <div id="ui" className="z-10 ">
           <Introduction />
           <TwoBody />
+          <HamiltonMechanics />
+          <NBodyComplexity />
           <Footer />
         </div>
       </div>
