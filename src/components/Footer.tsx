@@ -17,8 +17,23 @@ const Footer = (): JSX.Element => {
       <hr />
       <br />
       <p>
-        Made by <b>Neel Bansal</b> and <b>Soham Gupta</b> —{" "}
-        <Link to="/bibliographies">Copyright {new Date().getFullYear()}</Link>
+        Made by{" "}
+        <a
+          href="https://www.linkedin.com/in/neel-bansal/"
+          className="font-bold"
+          target="_blank"
+        >
+          Neel Bansal
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://www.linkedin.com/in/soham-gupta-4154a3374/"
+          className="font-bold"
+          target="_blank"
+        >
+          Soham Gupta
+        </a>{" "}
+        — Copyright {new Date().getFullYear()}
       </p>
     </footer>
   );

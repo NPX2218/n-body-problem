@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/n-body-problem/static/css/main.2228a5cb.css",
+    "main.js": "/n-body-problem/static/js/main.c6bb115c.js",
+    "index.html": "/n-body-problem/index.html",
+    "main.2228a5cb.css.map": "/n-body-problem/static/css/main.2228a5cb.css.map",
+    "main.c6bb115c.js.map": "/n-body-problem/static/js/main.c6bb115c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2228a5cb.css",
+    "static/js/main.c6bb115c.js"
+  ]
+}

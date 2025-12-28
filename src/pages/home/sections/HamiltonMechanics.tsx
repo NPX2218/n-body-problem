@@ -119,7 +119,11 @@ const HamiltonMechanics = (): JSX.Element => {
       />
       <p>Where:</p>
       <CenteredLatex text={"\\vec{s_1} = \\vec{r_2} - \\vec{r_1}"} />
-      <CenteredLatex text={"\\vec{s_2} = \\vec{r_3} - \\vec{r_1}"} />
+      <CenteredLatex
+        text={
+          "\\vec{s_2} = \\vec{r_3} - \\frac{m_1 \\vec{r_1} + m_2 \\vec{r_2}}{M_{12}}"
+        }
+      />
       <CenteredLatex text={"M_{12} = m_1 + m_2"} />
 
       {/* --------------------------- */}
@@ -173,7 +177,7 @@ const HamiltonMechanics = (): JSX.Element => {
       <CenteredLatex
         text={"\\rho_1 = \\mu_1 \\dot{s_1}, \\quad \\rho_2 = \\mu_2 \\dot{s_2}"}
       />
-      <p>Thus kinetic energy becomes:</p>
+      <p>Thus kinetic energy becomes (working in the center-of-mass frame):</p>
       <CenteredLatex
         text={"E_k = \\frac{\\rho_1^2}{2\\mu_1} + \\frac{\\rho_2^2}{2\\mu_2}"}
       />
