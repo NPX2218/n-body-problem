@@ -2,7 +2,7 @@
 
 An interactive educational website exploring the mathematics behind multi-body gravitational systems, from the two-body problem to Hamiltonian mechanics for three bodies.
 
----
+## <img src="./preview.png" width="1000">
 
 ## 📖 Overview
 
